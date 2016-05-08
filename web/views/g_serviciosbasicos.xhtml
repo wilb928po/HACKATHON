@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/plantilla.xhtml">
+        <ui:define name="body">
+            <!-- <script src="http://maps.google.com/maps/api/js?sensor=false" 
+              type="text/javascript"></script>
+            <p:gmap center="-17.783144, -63.181236" zoom="8" type="HYBRID" style="width:100%;height:400px" />
+            -->
+       
+            <style>
+                #todos{
+                    margin-left: 300px;
+                    width: 800px;
+                    height: 600px;
+                    
+                }
+                
+            </style>
+            
+            
+            
+            <h:form>      
+            <h:panelGrid columns="3">
+                <p:outputLabel for="distrito" value="Distrito: " />
+                <p:selectOneMenu  id="distrito" value="#{chartView.distrito}" style="width:125px;" effect="fold">
+                    <f:selectItem  itemValue="#{dao.todos}" />
+                    <f:selectItems value="#{dao.listaDistritos}" />
+                    
+                </p:selectOneMenu>
+                <p:commandButton actionListener="#{chartView.actualizar}" value="Actualizar" update="grafico"/>
+                
+            </h:panelGrid>            
+            <p:chart id="grafico" type="bar" model="#{chartView.horizontalBarModel}" style="width:1100px; height:500px;"/>
+            
+        </h:form>
+            
+            
+            
+            
+            
+        </ui:define>
+    </ui:composition>   
+    
+</html>
